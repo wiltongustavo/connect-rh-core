@@ -54,7 +54,7 @@ public class AuthController {
 
             // Mapear a Entidade User para o DTO de Resposta
             CoreAuthResponse response = new CoreAuthResponse();
-            response.setId(user.getId());
+            response.setUserId(user.getId());
             response.setName(user.getName());
             response.setEmail(user.getEmail());
 

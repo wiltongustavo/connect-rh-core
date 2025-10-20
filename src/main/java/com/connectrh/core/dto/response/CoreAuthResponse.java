@@ -18,7 +18,7 @@ import java.util.Set;
 public class CoreAuthResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private Long userId;
     private String name;
     private String email;
     private Set<String> roles; // Nomes dos perfis (e.g., "ADMIN", "EMPLOYEE")
