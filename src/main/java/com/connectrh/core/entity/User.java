@@ -43,6 +43,9 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password; // Stored encrypted password
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",

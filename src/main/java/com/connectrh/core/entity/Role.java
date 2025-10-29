@@ -35,6 +35,7 @@ public class Role implements Serializable {
     public enum RoleName {
         EMPLOYEE,
         MANAGER,
-        ADMIN
+        ADMIN,
+        USER
     }
 }

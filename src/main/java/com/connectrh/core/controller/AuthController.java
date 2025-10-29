@@ -1,7 +1,9 @@
 package com.connectrh.core.controller;
 
+import com.connectrh.core.dto.request.CreateUserRequest;
 import com.connectrh.core.dto.request.LoginRequest; // DTO de Request CORRETO
 import com.connectrh.core.dto.response.CoreAuthResponse; // DTO de Response CORRETO
+import com.connectrh.core.dto.response.UserCreateResponse;
 import com.connectrh.core.service.AuthService;
 import com.connectrh.core.entity.User; // Importa a Entidade User para mapeamento
 import jakarta.validation.Valid; // Necessário para ativar as validações do LoginRequest
@@ -57,6 +59,7 @@ public class AuthController {
             response.setUserId(user.getId());
             response.setName(user.getName());
             response.setEmail(user.getEmail());
+            response.setPhoneNumber((user.getPhoneNumber()));
 
             // Converte o Set de Entidades Role para um Set de nomes de String (ex: "ADMIN")
             response.setRoles(user.getRoles().stream()
@@ -67,6 +70,26 @@ public class AuthController {
         } else {
             // Lança 401 Unauthorized se as credenciais forem inválidas
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciais inválidas fornecidas para o Core Service.");
+        }
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<UserCreateResponse> registerUser(@Valid @RequestBody CreateUserRequest request) {
+        try {
+            User newUser = authService.createUser(request);
+
+            UserCreateResponse response = new UserCreateResponse(
+                    newUser.getId(),
+                    newUser.getName(),
+                    newUser.getEmail(),
+                    newUser.getPhoneNumber()
+            );
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 }

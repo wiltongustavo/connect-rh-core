@@ -14,12 +14,12 @@ import java.util.Set;
  */
 @Data
 @NoArgsConstructor
-// Corrigido: O nome da classe deve ser CoreAuthResponse
 public class CoreAuthResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long userId;
     private String name;
     private String email;
+    private String phoneNumber;
     private Set<String> roles; // Nomes dos perfis (e.g., "ADMIN", "EMPLOYEE")
 }

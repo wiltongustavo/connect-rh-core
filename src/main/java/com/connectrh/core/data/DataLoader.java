@@ -42,6 +42,7 @@ public class DataLoader implements CommandLineRunner {
             User adminUser = new User();
             adminUser.setName("System Administrator");
             adminUser.setEmail("admin@connectrh.com");
+            adminUser.setPhoneNumber("11954444380");
             // NOTE: Change this password in production!
             adminUser.setPassword(passwordEncoder.encode("admin123"));
 
