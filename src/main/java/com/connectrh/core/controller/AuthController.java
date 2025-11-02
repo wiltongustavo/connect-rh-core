@@ -1,5 +1,5 @@
-package com.connectrh.core.controller;
 
+package com.connectrh.core.controller;
 import com.connectrh.core.dto.request.CreateUserRequest;
 import com.connectrh.core.dto.request.LoginRequest; // DTO de Request CORRETO
 import com.connectrh.core.dto.response.CoreAuthResponse; // DTO de Response CORRETO

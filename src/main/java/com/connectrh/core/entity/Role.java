@@ -1,5 +1,6 @@
 package com.connectrh.core.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,6 +31,7 @@ public class Role implements Serializable {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(unique = true)
     private RoleName name;
 
     public enum RoleName {

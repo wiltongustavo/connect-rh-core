@@ -35,6 +35,7 @@ public class DataLoader implements CommandLineRunner {
         // Ensure roles exist
         Role adminRole = createRoleIfNotFound(RoleName.ADMIN);
         Role managerRole = createRoleIfNotFound(RoleName.MANAGER);
+        Role userRole = createRoleIfNotFound(RoleName.USER);
         createRoleIfNotFound(RoleName.EMPLOYEE); // Create the base employee role
 
         // Create default ADMIN user if none exists
@@ -47,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
             adminUser.setPassword(passwordEncoder.encode("admin123"));
 
             // Assign ADMIN role
-            adminUser.setRoles(Set.of(adminRole, managerRole)); // Admin often has management permissions too
+            adminUser.setRoles(Set.of(adminRole, managerRole, userRole)); // Admin often has management permissions too
             userRepository.save(adminUser);
 
             System.out.println("--- ADMIN User created: admin@connectrh.com / admin123 (CHANGE ME!) ---");
